@@ -1,0 +1,26 @@
+<script src="../accounting.toFixed-no-expo-notation-master/simpletest.js"></script>
+<script src="../accounting.toFixed-no-expo-notation-master/accounting.toFixed-no-expo-notation.js"></script>
+<script>
+    tests({
+        '(1) Should return original val if val contains no decimal and precision is 0': function () {
+            eq(toFixed(100, 0), 100);
+            eq(toFixed(0, 0), 0);
+        },
+        '(2) Should return a rounded whole number if value contains a decimal and precision is 0': function () {
+            eq(toFixed(274.521, 0), 275);
+            eq(toFixed(12.45, 0), 12);
+        },
+        '(3) Should add zeroes to satisfy precision if num of decimal places < precision': function () {
+            eq(toFixed(1046, 3), 1046.000);
+            eq(toFixed(0, 1), 0.0);
+            eq(toFixed(248.21, 4), 248.2100);
+            eq(toFixed(52.5, 3), 52.500);
+        },
+        '(4) Should return value rounded to the nearest decimal place according to precision if precision <= num of decimal places': function () {
+            eq(toFixed(0.615, 2), 0.62);
+            eq(toFixed(10.235, 2), 10.24);
+            eq(toFixed(1.005, 2), 1.01);
+            eq(toFixed(23.45, 2), 23.45);
+        }
+    });
+</script>
